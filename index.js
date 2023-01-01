@@ -1,7 +1,7 @@
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: process.env.apiKey,
 });
 const openai = new OpenAIApi(configuration);
 
@@ -35,6 +35,6 @@ app.post('/', async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log('Server listening on port 3000');
 });
