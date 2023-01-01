@@ -1,0 +1,29 @@
+{
+  "name": "pre-oracle-1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "create-react-app": "^5.0.1",
+    "express": "^4.18.2",
+    "node": "^19.3.0",
+    "openai": "^3.1.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-icon": "^1.0.0",
+    "react-icons": "^4.7.1",
+    "react-is": "^16.13.1",
+    "scrollreveal": "^4.0.9",
+    "styled-components": "^5.3.6",
+    "yarn": "^1.22.19"
+  },
+  "devDependencies": {},
+  "description": ""
+}
