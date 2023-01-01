@@ -1,7 +1,7 @@
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: process.env.APIKEY,
 });
 const openai = new OpenAIApi(configuration);
 
@@ -27,7 +27,7 @@ app.post('/', async (req, res) => {
     frequency_penalty: 0,
     presence_penalty: 0,
   })
-  //console.log(response.data)
+  console.log(response.data)
   if (response.data.choices[0].text){
     res.json({
       message: response.data.choices[0].text
