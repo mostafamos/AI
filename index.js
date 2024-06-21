@@ -38,7 +38,7 @@ app.post('/', async (req, res) => {
 
   try {
     const response = await openai.createCompletion({
-      model: "davinci-002",
+      model: "text-ada-001",
       prompt: text,
       temperature: 0.7,
       max_tokens: 50,
