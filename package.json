@@ -22,7 +22,8 @@
     "react-is": "^16.13.1",
     "scrollreveal": "^4.0.9",
     "styled-components": "^5.3.6",
-    "yarn": "^1.22.19"
+    "yarn": "^1.22.19",
+    "llamaapi": "^1.0.0"
   },
   "devDependencies": {},
   "description": ""
