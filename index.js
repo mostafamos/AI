@@ -1,16 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { LlamaAPI } = require('llamaapi'); // Ensure you import LlamaAPI correctly
+const { LlamaAPI } = require('llamaapi');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-// Retrieve the API key from environment variables
 const llamaKey = process.env.LLAMAKEY;
 
-// Log the API key (for debugging only, remove this in production)
 if (!llamaKey) {
   console.error('LLAMA key is not set. Please set the LLAMAKEY environment variable.');
   process.exit(1);
@@ -18,15 +16,12 @@ if (!llamaKey) {
   console.log('Using LLAMA key:', llamaKey);
 }
 
-// Initialize the LlamaAPI with your API token
 const llama = new LlamaAPI(llamaKey);
 
-// Route for handling POST requests
 app.post('/', async (req, res) => {
   const { text } = req.body;
 
   try {
-    // Make the API request asynchronously
     const response = await llama.run({
       model: 'llama3-70b',
       messages: [
@@ -35,7 +30,6 @@ app.post('/', async (req, res) => {
       ],
     });
 
-    // Parse and return the response
     if (response && response.data) {
       res.json({
         message: response.data,
@@ -72,7 +66,6 @@ app.post('/', async (req, res) => {
   }
 });
 
-// Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
