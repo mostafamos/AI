@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { LlamaAPI } = require('llamaapi'); // Ensure you have llamaapi installed: npm install llamaapi
-const app = express();
+const { LlamaAPI } = require('llamaapi'); // Ensure you import LlamaAPI correctly
 
+const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -21,21 +21,19 @@ if (!llamaKey) {
 // Initialize the LlamaAPI with your API token
 const llama = new LlamaAPI(llamaKey);
 
+// Route for handling POST requests
 app.post('/', async (req, res) => {
   const { text } = req.body;
 
-  // Define the API request payload
-  const apiRequestJson = {
-    model: 'llama3-70b',
-    messages: [
-      { role: 'system', content: "You are a llama assistant that talks like a llama, starting every word with 'll'." },
-      { role: 'user', content: text },
-    ],
-  };
-
   try {
-    // Make the API request
-    const response = await llama.run(apiRequestJson);
+    // Make the API request asynchronously
+    const response = await llama.run({
+      model: 'llama3-70b',
+      messages: [
+        { role: 'system', content: "You are a llama assistant that talks like a llama, starting every word with 'll'." },
+        { role: 'user', content: text },
+      ],
+    });
 
     // Parse and return the response
     if (response && response.data) {
@@ -74,6 +72,8 @@ app.post('/', async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Server listening on port 3000');
+// Start the server
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
 });
